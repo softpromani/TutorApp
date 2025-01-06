@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\StandardController;
 use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\SubscriptionController;
+use App\Http\Controllers\Admin\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,6 +17,8 @@ Route::get('/', function () {
    return inertia('Home',compact('name'));
 });
 
+
+Route::get('admin/login', [AuthController::class, 'login']);
 Route::get('admin/dashboard', [AdminController::class, 'dashboard']);
 
 Route::group([ 'prefix'=>'admin','as'=>'admin.'],function(){

@@ -1,7 +1,8 @@
 @extends('admin.includes.layout')
+@section('title','Dashboard')
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4">Page 1</h4>
+    <h4 class="fw-bold py-3 mb-4">Dashboard</h4>
     <p>
       Sample page.<br />For more layout options refer
       <a
