@@ -28,6 +28,7 @@
       rel="stylesheet" />
 
     @include('admin.includes.head')
+    @yield('css-area')
   </head>
 
   <body>
@@ -77,5 +78,6 @@
     @include('admin.includes.foot')
 
     <!-- Page JS -->
+    @yield('script-area')
   </body>
 </html>

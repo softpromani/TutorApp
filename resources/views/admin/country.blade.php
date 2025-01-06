@@ -1,84 +1,63 @@
-@include('admin.includes.layout')
+@extends('admin.includes.layout')
+@section('title', 'Country')
 @section('content')
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Country</a>
-        </div>
-    </nav>
-    <h1 class="text-center">Country</h1>
-    <div class="container card">
-        <div class="card-body">
-            <form
-                action="{{ isset($editcountry) ? route('admin.country.update', $editcountry->id) : route('admin.country.store') }}"
-                method="POST">
-                @csrf
-                @isset($editcountry)
-                @method('PATCH')
-                @endisset
-                <div class="row">
-                    <div class="mb-3 col-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
-                                value="{{ isset($editcountry) ? $editcountry->name : '' }}">
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="code" name="code" placeholder="Enter your code"
-                                value="{{ isset($editcountry) ? $editcountry->code : '' }}">
-                        </div>
-                        <div class="input-group">
-                            <input type="number" class="form-control" id="phone_code" name="phone_code" placeholder="Enter your phone code"
-                                value="{{ isset($editcountry) ? $editcountry->phone_code : '' }}">
-                        </div>
-                        <button type="submit" class="btn btn-primary">{{ isset($edituser) ? 'Update' :
-                            'Submit'}}</button>
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Country</h4>
+
+        <!-- Basic Layout -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Add Country</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="#" method="POST">
+                            <div class="row">
+                                <div class="col-4 mb-3">
+                                    <label class="form-label" for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Name" />
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <label class="form-label" for="phone-code">Phone Code</label>
+                                    <input type="text" class="form-control" id="phone-code" placeholder="Phone Code" />
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <label class="form-label" for="code">Code</label>
+                                    <input type="text" class="form-control" id="code" placeholder="Code" />
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
+
+        <!-- Ajax Sourced Server-side -->
+        <div class="card">
+            <h5 class="card-header">Country List</h5>
+            <div class="card-datatable text-nowrap card-body">
+                <table class="datatables-ajax table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone Code</th>
+                            <th>Code</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <!--/ Ajax Sourced Server-side -->
+
     </div>
 
-    <div class="container mt-5 card">
-        <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">SrNo</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Code</th>
-                        <th scope="col">Phone Code</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($countries as $country)
-                    <tr>
-                        <th scope="row">{{ $loop->index+1 }}</th>
-                        <td>{{ $country->name ?? 'N/A' }}</td>
-                        <td>{{ $country->code ?? 'N/A' }}</td>
-                        <td>{{ $country->phone_code ?? 'N/A' }}</td>
-                        <td>{{ $country->status ?? 'N/A' }}</td>
-                        <td>
-                            <a href="{{ route('admin.country.edit', $country->id) }}" class="btn btn-primary"
-                                href="#">Edit</a>
-
-                            <form action="{{ route('admin.country.destroy', $country->id) }}" method="POST"
-                                onsubmit="return confirm('Are you sure you want to delete this country?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @empty
-                    <tr>
-                        <td colspan="6" class="text-center">No data found!</td>
-                    </tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
-    </div>
-</body>
+@endsection
+@section('script-area')
+    <!-- Page JS -->
+    <script src="{{ asset('assets/js/tables-datatables-advanced.js') }}"></script>
 @endsection

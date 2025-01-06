@@ -15,7 +15,6 @@ class CountryController extends Controller
     {
         $countries=Country::get();
         return view('admin.country',compact('countries'));
-
     }
 
     /**
