@@ -10,3 +10,5 @@ Route::get('/', function () {
 });
 
 Route::get('admin/dashboard', AdminController::class, 'dashboard');
+
+
