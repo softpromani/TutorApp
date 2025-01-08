@@ -36,7 +36,7 @@ class CityController extends Controller
     {
         $data = [
             //Database column_name => Form field name
-            'city_name' => $request->city_name,
+            'city' => $request->city,
             'state_id' => $request->state_id,
             'pin_code' => $request->pin_code,
         ];
@@ -73,7 +73,7 @@ class CityController extends Controller
     {
         $data = [
             //Database column_name => Form field name
-            'city_name' => $request->city_name,
+            'city' => $request->city,
             'state_id' => $request->state_id,
             'pin_code' => $request->pin_code,
         ];

@@ -34,7 +34,7 @@ class StateController extends Controller
     {
         $data = [
             //Database column_name => Form field name
-            'state_name' => $request->state_name,
+            'state' => $request->state,
             'country_id' => $request->country_id,
         ];
 
@@ -69,7 +69,7 @@ class StateController extends Controller
     {
         $data = [
             //Database column_name => Form field name
-            'state_name' => $request->state_name,
+            'state' => $request->state,
             'country_id' => $request->country_id,
         ];
 

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('states', function (Blueprint $table) {
             $table->id();
-            $table->string('state_name');
+            $table->string('state');
             $table->bigInteger('country_id')->nullable();
-            $table->string('status')->nullable();
+            $table->string('status')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

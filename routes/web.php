@@ -6,9 +6,13 @@ use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\StandardController;
 use App\Http\Controllers\Admin\StateController;
+use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\Auth\AuthController;
+use App\Http\Controllers\Admin\TeacherController;
+use App\Models\StudentProfile;
+use App\Models\TeacherProfile;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,5 +34,7 @@ Route::group([ 'prefix'=>'admin','as'=>'admin.'],function(){
     Route::resource('standard',StandardController::class);
     Route::resource('subject',SubjectController::class);
     Route::resource('subscription',SubscriptionController::class);
+    Route::resource('teacher',TeacherController::class);
+    Route::resource('student',StudentController::class);
 
 });

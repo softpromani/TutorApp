@@ -32,7 +32,7 @@ class SubscriptionController extends Controller
     {
         $data = [
             //Database column_name => Form field name
-            'subscription_name' => $request->subscription_name,
+            'subscription' => $request->subscription,
 
         ];
 
@@ -66,7 +66,7 @@ class SubscriptionController extends Controller
     {
         $data = [
             //Database column_name => Form field name
-            'subscription_name' => $request->subscription_name,
+            'subscription' => $request->subscription,
 
         ];
 

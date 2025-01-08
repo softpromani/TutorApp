@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->string('subscription_name');
-            $table->string('status')->nullable();
+            $table->string('subscription');
+            $table->string('status')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

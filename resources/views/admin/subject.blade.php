@@ -1,52 +1,55 @@
-@include('admin.includes.layout')
+@extends('admin.includes.layout')
+@section('title', 'Subject')
 @section('content')
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Subject</a>
-        </div>
-    </nav>
-    <h1 class="text-center">Subject</h1>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Subject</h4>
 
-
-    <div class="container card">
-        <div class="card-body">
-            <form
-                action="{{ isset($editsubject) ? route('admin.subject.update', $editsubject->id) : route('admin.subject.store') }}"
-                method="POST">
-                @csrf
-                @isset($editsubject)
-                @method('PATCH')
-                @endisset
-                <div class="row">
-                    <div class="mb-3 col-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="subjectname" name="subject_name" placeholder="Enter your subject name"
-                                value="{{ isset($editsubject) ? $editsubject->subject_name : '' }}">
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="subjectcode" name="subject_code" placeholder="Enter your subject code"
-                                value="{{ isset($editsubject) ? $editsubject->subject_code : '' }}">
-                        </div>
-                        <button type="submit" class="btn btn-primary">{{ isset($editsubject) ? 'Update' :
-                            'Submit'}}</button>
-                    </div>
+    <!-- Basic Layout -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Add Subject</h5>
                 </div>
-            </form>
+                <div class="card-body">
+                    <form action="{{ isset($editsubject) ? route('admin.subject.update', $editsubject->id) :
+                        route('admin.subject.store') }}" method="POST">
+                        @csrf
+                        @isset($editsubject)
+                        @method('PATCH')
+                        @endisset
+                        <div class="row">
+                            <div class="col-4 mb-3">
+                                <label class="form-label" for="subject">Subject</label>
+                                <input type="text" class="form-control" id="subjectname" name="subject"
+                                    placeholder="Enter your subject"
+                                    value="{{ isset($editsubject) ? $editsubject->subject : '' }}">
+                            </div>
+                            <div class="col-4 mb-3">
+                                <label class="form-label" for="subjectcode">Subject Code</label>
+                                <input type="text" class="form-control" id="subjectcode" name="subject_code"
+                                    placeholder="Enter your subject_code"
+                                    value="{{ isset($editsubject) ? $editsubject->subject_code : '' }}">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
-
-
-
-    <div class="container mt-5 card">
-        <div class="card-body">
-            <table class="table">
+    <!-- Ajax Sourced Server-side -->
+    <div class="card">
+        <h5 class="card-header">Subject List</h5>
+        <div class="card-datatable text-nowrap card-body">
+            <table class=" table">
                 <thead>
                     <tr>
-                        <th scope="col">SrNo</th>
-                        <th scope="col">Subject Name</th>
+                        <th scope="col">Sr.No</th>
+                        <th scope="col">Subject</th>
                         <th scope="col">Subject Code</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
@@ -56,9 +59,19 @@
                     @forelse ($subjects as $subject)
                     <tr>
                         <th scope="row">{{ $loop->index+1 }}</th>
-                        <td>{{ $subject->subject_name ?? 'N/A' }}</td>
-                        <td>{{ $subject-subject_code ?? 'N/A' }}</td>
-                        <td>{{ $subject->status ?? 'N/A' }}</td>
+                        <td>{{ $subject->subject ?? 'N/A' }}</td>
+                        <td>{{ $subject->subject_code ?? 'N/A' }}</td>
+                        <td>
+                            <div class="switches-stacked">
+                                <label class="switch switch-square">
+                                  <input type="radio" class="switch-input" name="status" checked />
+                                  <span class="switch-toggle-slider">
+                                    <span class="switch-on"></span>
+                                    <span class="switch-off"></span>
+                                  </span>
+                                </label>
+                            </div>
+                        </td>
                         <td>
                             <a href="{{ route('admin.subject.edit', $subject->id) }}" class="btn btn-primary"
                                 href="#">Edit</a>
@@ -82,5 +95,11 @@
             </table>
         </div>
     </div>
-</body>
+    <!--/ Ajax Sourced Server-side -->
+
+</div>
+@endsection
+@section('script-area')
+<!-- Page JS -->
+<script src="{{ asset('assets/js/tables-datatables-advanced.js') }}"></script>
 @endsection

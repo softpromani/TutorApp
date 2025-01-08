@@ -1,70 +1,85 @@
-@include('admin.includes.layout')
+@extends('admin.includes.layout')
+@section('title', 'City')
 @section('content')
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">City</a>
-        </div>
-    </nav>
-    <h1 class="text-center">City</h1>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">City</h4>
 
-
-    <div class="container card">
-        <div class="card-body">
-            <form
-                action="{{ isset($editcity) ? route('admin.city.update', $editcity->id) : route('admin.city.store') }}"
-                method="POST">
-                @csrf
-                @isset($editcity)
-                @method('PATCH')
-                @endisset
-                <div class="row">
-                    <div class="mb-3 col-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="cityname" name="city_name" placeholder="Enter your city name"
-                                value="{{ isset($editcity) ? $editcity->city_name : '' }}">
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="stateid" name="state_id" placeholder="Enter your state_id"
-                                value="{{ isset($editcity) ? $editcity->state_id : '' }}">
-                        </div>
-                        <div class="input-group">
-                            <input type="number" class="form-control" id="pin_code" name="pin_code" placeholder="Enter your pin code"
-                                value="{{ isset($editcity) ? $editcity->pin_code : '' }}">
-                        </div>
-                        <button type="submit" class="btn btn-primary">{{ isset($editcity) ? 'Update' :
-                            'Submit'}}</button>
-                    </div>
+    <!-- Basic Layout -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Add City</h5>
                 </div>
-            </form>
+                <div class="card-body">
+                    <form action="{{ isset($editcity) ? route('admin.city.update', $editcity->id) :
+                        route('admin.city.store') }}" method="POST">
+                        @csrf
+                        @isset($editcity)
+                        @method('PATCH')
+                        @endisset
+                        <div class="row">
+                            <div class="col-4 mb-3">
+                                <label class="form-label" for="city">City</label>
+                                <input type="text" class="form-control" id="city" name="city"
+                                    placeholder="Enter your city"
+                                    value="{{ isset($editcity) ? $editcity->city : '' }}">
+                            </div>
+                            <div class="col-4 mb-3">
+                                <label class="form-label" for="stateid">State Id</label>
+                                <input type="text" class="form-control" id="state_id" name="state_id"
+                                    placeholder="Enter your state_id"
+                                    value="{{ isset($editcity) ? $editcity->state_id : '' }}">
+                            </div>
+                            <div class="col-4 mb-3">
+                                <label class="form-label" for="pincode">Pin Code</label>
+                                <input type="text" class="form-control" id="pincode" name="pin_code"
+                                    placeholder="Enter your pin_code"
+                                    value="{{ isset($editcity) ? $editcity->pin_code : '' }}">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
-
-
-
-    <div class="container mt-5 card">
-        <div class="card-body">
-            <table class="table">
+    <!-- Ajax Sourced Server-side -->
+    <div class="card">
+        <h5 class="card-header">City List</h5>
+        <div class="card-datatable text-nowrap card-body">
+            <table class=" table">
                 <thead>
                     <tr>
-                        <th scope="col">SrNo</th>
-                        <th scope="col">City Name</th>
+                        <th scope="col">Sr.No</th>
+                        <th scope="col">City</th>
                         <th scope="col">State Id</th>
                         <th scope="col">Pin Code</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Action</th>               
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($cities as $city)
                     <tr>
                         <th scope="row">{{ $loop->index+1 }}</th>
-                        <td>{{ $city->city_name ?? 'N/A' }}</td>
-                        <td>{{ $city-state_id ?? 'N/A' }}</td>
+                        <td>{{ $city->city ?? 'N/A' }}</td>
+                        <td>{{ $city->state_id ?? 'N/A' }}</td>
                         <td>{{ $city->pin_code ?? 'N/A' }}</td>
-                        <td>{{ $city->status ?? 'N/A' }}</td>
+                        <td>
+                            <div class="switches-stacked">
+                                <label class="switch switch-square">
+                                  <input type="radio" class="switch-input" name="status" checked />
+                                  <span class="switch-toggle-slider">
+                                    <span class="switch-on"></span>
+                                    <span class="switch-off"></span>
+                                  </span>
+                                </label>
+                            </div>
+                        </td>
                         <td>
                             <a href="{{ route('admin.city.edit', $city->id) }}" class="btn btn-primary"
                                 href="#">Edit</a>
@@ -88,5 +103,11 @@
             </table>
         </div>
     </div>
-</body>
+    <!--/ Ajax Sourced Server-side -->
+
+</div>
+@endsection
+@section('script-area')
+<!-- Page JS -->
+<script src="{{ asset('assets/js/tables-datatables-advanced.js') }}"></script>
 @endsection

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
-            $table->string('subject_name');
+            $table->string('subject');
             $table->string('subject_code')->nullable();
-            $table->string('status')->nullable();
+            $table->string('status')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -32,7 +32,7 @@ class BoardController extends Controller
     {
         $data = [
             //Database column_name => Form field name
-            'board_name' => $request->board_name,
+            'board' => $request->board,
 
         ];
 
@@ -53,7 +53,7 @@ class BoardController extends Controller
      */
     public function edit(Board $board)
     {
-        
+
         $editboard = $board;
         // dd($edituser);
         $boards = Board::get();
@@ -67,7 +67,7 @@ class BoardController extends Controller
     {
         $data = [
             //Database column_name => Form field name
-            'board_name' => $request->board_name,
+            'board' => $request->board,
 
         ];
 

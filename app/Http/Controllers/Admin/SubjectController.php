@@ -32,7 +32,8 @@ class SubjectController extends Controller
     {
         $data = [
             //Database column_name => Form field name
-            'subject_name' => $request->subject_name,
+            'subject' => $request->subject,
+            'subject_code' => $request->subject_code,
 
         ];
 
@@ -66,7 +67,8 @@ class SubjectController extends Controller
     {
         $data = [
             //Database column_name => Form field name
-            'subject_name' => $request->subject_name,
+            'subject' => $request->subject,
+            'subject_code' => $request->subject_code,
 
         ];
 

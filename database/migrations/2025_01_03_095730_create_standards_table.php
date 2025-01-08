@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('standards', function (Blueprint $table) {
             $table->id();
-            $table->string('standard_name');
-            $table->string('status')->nullable();
+            $table->string('standard');
+            $table->string('status')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

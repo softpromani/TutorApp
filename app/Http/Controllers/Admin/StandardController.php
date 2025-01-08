@@ -14,7 +14,7 @@ class StandardController extends Controller
     public function index()
     {
         $standards=Standard::get();
-        return view('admin.standard',compact( 'standards'));
+        return view('admin.standard', compact( 'standards'));
     }
 
     /**
@@ -32,7 +32,7 @@ class StandardController extends Controller
     {
         $data = [
             //Database column_name => Form field name
-            'standard_name' => $request->standard_name,
+            'standard' => $request->standard,
 
         ];
 
@@ -66,7 +66,7 @@ class StandardController extends Controller
     {
         $data = [
             //Database column_name => Form field name
-            'board_name' => $request->board_name,
+            'standard' => $request->standard,
 
         ];
 

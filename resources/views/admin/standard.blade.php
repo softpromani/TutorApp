@@ -1,46 +1,49 @@
-@include('admin.includes.layout')
+@extends('admin.includes.layout')
+@section('title', 'Standard')
 @section('content')
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Standard</a>
-        </div>
-    </nav>
-    <h1 class="text-center">Standard</h1>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Standard</h4>
 
-
-    <div class="container card">
-        <div class="card-body">
-            <form
-                action="{{ isset($editstandard) ? route('admin.standard.update', $editstandard->id) : route('admin.standard.store') }}"
-                method="POST">
-                @csrf
-                @isset($editstandard)
-                @method('PATCH')
-                @endisset
-                <div class="row">
-                    <div class="mb-3 col-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="standardname" name="standard_name" placeholder="Enter your standard name"
-                                value="{{ isset($editstandard) ? $editstandard->standard_name : '' }}">
+    <!-- Basic Layout -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Add Standard</h5>
+                </div>
+                <div class="card-body">
+                    <form action="{{ isset($editstandard) ? route('admin.standard.update', $editstandard->id) :
+                        route('admin.standard.store') }}" method="POST">
+                        @csrf
+                        @isset($editstandard)
+                        @method('PATCH')
+                        @endisset
+                        <div class="row">
+                            <div class="col-4 mb-3">
+                                <label class="form-label" for="standard">Standard</label>
+                                <input type="text" class="form-control" id="standard" name="standard"
+                                    placeholder="Enter your standard"
+                                    value="{{ isset($editstandard) ? $editstandard->standard : '' }}">
+                            </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">{{ isset($editstandard) ? 'Update' :
-                            'Submit'}}</button>
-                    </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
-    <div class="container mt-5 card">
-        <div class="card-body">
-            <table class="table">
+    <!-- Ajax Sourced Server-side -->
+    <div class="card">
+        <h5 class="card-header">Standard List</h5>
+        <div class="card-datatable text-nowrap card-body">
+            <table class=" table">
                 <thead>
                     <tr>
-                        <th scope="col">SrNo</th>
-                        <th scope="col">Standard Name</th>
+                        <th scope="col">Sr.No</th>
+                        <th scope="col">Standard</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -49,8 +52,18 @@
                     @forelse ($standards as $standard)
                     <tr>
                         <th scope="row">{{ $loop->index+1 }}</th>
-                        <td>{{ $standard->standard_name ?? 'N/A' }}</td>
-                        <td>{{ $standard->status ?? 'N/A' }}</td>
+                        <td>{{ $standard->standard ?? 'N/A' }}</td>
+                        <td>
+                            <div class="switches-stacked">
+                                <label class="switch switch-square">
+                                  <input type="radio" class="switch-input" name="status" checked />
+                                  <span class="switch-toggle-slider">
+                                    <span class="switch-on"></span>
+                                    <span class="switch-off"></span>
+                                  </span>
+                                </label>
+                            </div>
+                        </td>
                         <td>
                             <a href="{{ route('admin.standard.edit', $standard->id) }}" class="btn btn-primary"
                                 href="#">Edit</a>
@@ -74,5 +87,11 @@
             </table>
         </div>
     </div>
-</body>
+    <!--/ Ajax Sourced Server-side -->
+
+</div>
+@endsection
+@section('script-area')
+<!-- Page JS -->
+<script src="{{ asset('assets/js/tables-datatables-advanced.js') }}"></script>
 @endsection

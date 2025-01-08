@@ -53,8 +53,48 @@
             </ul>
         </li>
 
-         <!-- Apps & Pages -->
-         <li class="menu-header small text-uppercase">
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-users"></i>
+                <div data-i18n="Users">Teacher</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('admin.teacher.create') }}" class="menu-link">
+                        <div data-i18n="List">Add Teacher</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('admin.teacher.index') }}" class="menu-link">
+                        <div data-i18n="List">View Teacher</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-users"></i>
+                <div data-i18n="Users">Student</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('admin.student.create') }}" class="menu-link">
+                        <div data-i18n="List">Add Student</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('admin.student.index') }}" class="menu-link">
+                        <div data-i18n="List">View Student</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <!-- Apps & Pages -->
+        <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Business &amp; Setting</span>
         </li>
         <li class="menu-item">
@@ -68,57 +108,58 @@
                         <div data-i18n="List">Country</div>
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a href="{{ route('admin.state.index') }}" class="menu-link">
+                        <div data-i18n="Page 2">State</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('admin.city.index') }}" class="menu-link">
+                        <div data-i18n="Page 2">City</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('admin.board.index') }}" class="menu-link">
+                        <div data-i18n="Page 2">Board</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('admin.standard.index') }}" class="menu-link">
+                        <div data-i18n="Page 2">standard</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('admin.subject.index') }}" class="menu-link">
+                        <div data-i18n="Page 2">Subject</div>
+                    </a>
+                </li>
+
             </ul>
         </li>
 
-        <li class="menu-item active">
-            <a href="{{ route('admin.country.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-app-window"></i>
-                <div data-i18n="Page 1">Country</div>
-            </a>
-        </li>
         <li class="menu-item">
-            <a href="{{ route('admin.state.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-app-window"></i>
-                <div data-i18n="Page 2">State</div>
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-users"></i>
+                <div data-i18n="Users">Subscription</div>
             </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('admin.city.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-app-window"></i>
-                <div data-i18n="Page 2">City</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('admin.board.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-app-window"></i>
-                <div data-i18n="Page 2">Board</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="#) }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-app-window"></i>
-                <div data-i18n="Page 2">Teacher</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-app-window"></i>
-                <div data-i18n="Page 2">Student</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('admin.standard.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-app-window"></i>
-                <div data-i18n="Page 2">standard</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('admin.subject.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-app-window"></i>
-                <div data-i18n="Page 2">Subject</div>
-            </a>
-        </li>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <div data-i18n="List">Add Plans</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <div data-i18n="List">View Plans</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <div data-i18n="List">Analytics</div>
+                    </a>
+                </li>
+            </ul>
 
+        </li>
     </ul>
 </aside>
