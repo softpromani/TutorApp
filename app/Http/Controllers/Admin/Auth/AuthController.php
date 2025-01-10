@@ -11,4 +11,9 @@ class AuthController extends Controller
     {
         return view('admin.auth.login');
     }
+
+    function postLogin(Request $request)
+    {
+        dd($request->all());
+    }
 }

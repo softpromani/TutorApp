@@ -16,7 +16,7 @@
     <ul class="menu-inner py-1">
 
         <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('admin.dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-smart-home"></i>
                 <div data-i18n="Page 1">Dashboard</div>
             </a>
@@ -28,12 +28,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="app-access-roles.html" class="menu-link">
+                    <a href="{{ route('admin.role.index') }}" class="menu-link">
                         <div data-i18n="Roles">Roles</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="app-access-permission.html" class="menu-link">
+                    <a href="{{ route('admin.permission.index') }}" class="menu-link">
                         <div data-i18n="Permission">Permission</div>
                     </a>
                 </li>
