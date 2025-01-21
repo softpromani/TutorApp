@@ -14,6 +14,11 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'semiBlack': '#06040E',
+                'darkBlack': '#06040E',
+                'blue1': '#145DA1'
+              },
         },
     },
     plugins: [],
