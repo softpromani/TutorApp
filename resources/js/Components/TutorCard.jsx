@@ -11,7 +11,11 @@ const TutorCard = ({ subject="adsdsa", tutorCount="11" }) => {
       {/* Text Content */}
       <div className='text-left'>
         <h2 className="text-base text-center md:text-left md:text-3xl font-bold text-darkBlack">{subject}</h2>
-        <p className="text-sm text-center md:text-left md:text-lg text-gray-500">{tutorCount} Tutors Available</p>
+        <div className='flex flex-row gap-1 items-center'>
+
+        <p className="text-sm text-center md:text-left md:text-lg text-gray-500">{tutorCount} Tutors Available </p>
+        <div className='bg-[#44C200] w-[14] h-[14px] rounded-full'/>
+        </div>
       </div>
     </div>
   );
