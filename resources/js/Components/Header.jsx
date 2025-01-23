@@ -8,23 +8,42 @@ const Header = () => {
     };
 
     return (
-        <header className="bg-gray-50 py-4 px-10">
+        <header className="bg-gray-50 py-4 px-10 w-full fixed z-[100]">
             <div className="container flex items-center justify-between">
                 <div className="flex flex-row gap-8">
+                    {/* Hamburger Button for Mobile */}
+                    <button
+                        className="md:hidden text-gray-600 focus:outline-none"
+                        onClick={toggleMenu}
+                    >
+                        <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M4 6h16M4 12h16M4 18h16"
+                            ></path>
+                        </svg>
+                    </button>
                     {/* Logo */}
-                    <div className="flex items-center">
+                    <div className="flex items-center md:ml-0 -ml-6">
                         <img
                             src="/assets/img/logo.png"
                             alt="Logo"
-                            className="w-[216px] h-[42px]"
+                            className="lg:w-[216px] w-[188px] md:h-[42px] h-[38px]"
                         />
                     </div>
 
                     {/* Navigation */}
                     <nav
-                        className={`${
-                            isMenuOpen ? "block" : "hidden"
-                        } md:flex md:items-center md:space-x-8 text-gray-600 fixed md:static top-0 left-0 w-2/3 md:w-auto h-full md:h-auto shadow-lg md:shadow-none p-4 md:p-0 transition-transform`}
+                        className={`${isMenuOpen ? "block" : "hidden"
+                            } md:flex md:items-center md:space-x-8 text-gray-600 fixed md:static top-0 left-0 w-2/3 md:w-auto h-full md:h-auto shadow-lg md:shadow-none p-4 md:p-0 transition-transform 1220-less:text-sm`}
                     >
                         <a
                             href="#"
@@ -54,27 +73,22 @@ const Header = () => {
                 </div>
 
                 <div className="flex">
-                    {/* Hamburger Button for Mobile */}
-                    <button
-                        className="md:hidden text-gray-600 focus:outline-none"
-                        onClick={toggleMenu}
-                    >
-                        <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M4 6h16M4 12h16M4 18h16"
-                            ></path>
+                    <div className="md:hidden mr-2">
+                        <svg width={30} height={30} viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.0664 22.0673L27.7202 27.7212" stroke="#FF8110" strokeWidth="1.875" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M2.2793 13.5865C2.2793 19.8316 7.34191 24.8943 13.587 24.8943C16.715 24.8943 19.5463 23.6242 21.5934 21.5716C23.6334 19.5261 24.8947 16.7037 24.8947 13.5865C24.8947 7.34144 19.8321 2.27882 13.587 2.27882C7.34191 2.27882 2.2793 7.34144 2.2793 13.5865Z" stroke="#FF8110" strokeWidth="1.875" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                    </button>
 
+
+                    </div>
+                    <div className="md:hidden">
+                        <button className="bg-orange-500 text-white text-sm px-4 py-1 rounded-xl hover:bg-orange-600 transition flex flex-row gap-2 items-center">
+                            Login
+                            <svg width={10} height={6} viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 1L5 5L1 1" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
                     <div className="hidden md:flex space-x-4 float-end h-[45px]">
                         <div className="relative mb-10 z-10">
                             <div className="relative w-full max-w-sm">
@@ -98,14 +112,14 @@ const Header = () => {
                                 <input
                                     type="text"
                                     placeholder="Search"
-                                    className=" pl-10 py-2 w-[253px] border border-[#06040E] text-[#06040E] rounded-full focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400"
+                                    className=" pl-10 py-2 lg:w-[253px] 768:w-[144px] border border-[#06040E] text-[#06040E] rounded-2xl focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400"
                                 />
                             </div>
                         </div>
-                        <button className="border border-orange-500 text-orange-500 px-4 py-2 rounded-full hover:bg-orange-500 hover:text-white transition">
+                        <button className="border border-orange-500 text-orange-500 px-4 py-2 rounded-2xl hover:bg-orange-500 hover:text-white transition">
                             Tutor Login
                         </button>
-                        <button className="bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600 transition">
+                        <button className="bg-orange-500 text-white px-4 py-2 rounded-2xl hover:bg-orange-600 transition">
                             Student Login
                         </button>
                     </div>

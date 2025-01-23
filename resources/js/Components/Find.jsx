@@ -6,7 +6,7 @@ const Find = () => {
     <div className="bg-gray-50 flex flex-col items-center py-16 px-4 sm:px-6 lg:px-8 relative mx-36 mt-[86px]">
       {/* Avatars */}
        {/* Avatars with Nested Circles */}
-       {["top-[90px] left-0", "top-[90px] -right-[120px]", "bottom-0 left-14", "bottom-0 -right-20 "].map((position, index) => (
+       {["top-[90px] -left-[75px]", "top-[90px] right-[70px]", "bottom-0 left-14", "bottom-0 -right-20 "].map((position, index) => (
         <div
           key={index}
           className={`absolute bg-cover bg-center ${position} ${(index === 0 || index === 1) ? "w-[130px] h-[130px]" : "w-[168px] h-[168px]"}  transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center`}
