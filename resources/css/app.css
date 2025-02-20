@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+    font-family: 'Helvetica Roman';
+    src: url('./assets/vendor/fonts/fontawesome/Helvetica Roman.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply the font globally */
+html,
+body {
+    font-family: 'Helvetica Roman', sans-serif;
+    background-color: rgb(249, 250, 251);
+}
